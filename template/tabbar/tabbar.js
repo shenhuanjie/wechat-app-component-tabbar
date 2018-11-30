@@ -1,66 +1,50 @@
-// template/tabbar/tabbar.js
-Page({
+//初始化数据
+function tabbarinit() {
+	return [{
+			"current": 0,
+			"pagePath": "/pages/index/index",
+			"iconPath": "/images/home.png",
+			"selectedIconPath": "/images/home_on.png",
+			"text": "主页"
+		},
+		{
+			"current": 0,
+			"pagePath": "/pages/news/news",
+			"iconPath": "/images/message.png",
+			"selectedIconPath": "/images/message_on.png",
+			"text": "资讯"
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
+		},
+		{
+			"current": 0,
+			"pagePath": "/pages/category/category",
+			"iconPath": "/images/category.png",
+			"selectedIconPath": "/images/category_on.png",
+			"text": "分类"
+		},
+		{
+			"current": 0,
+			"pagePath": "/pages/buy/buy",
+			"iconPath": "/images/buy.png",
+			"selectedIconPath": "/images/buy_on.png",
+			"text": "购物"
+		}
+	]
 
-  },
+}
+//tabbar 主入口
+function tabbarmain(bindName = "tabdata", id, target) {
+	var that = target;
+	var bindData = {};
+	var otabbar = tabbarinit();
+	otabbar[id]['iconPath'] = otabbar[id]['selectedIconPath'] //换当前的icon
+	otabbar[id]['current'] = 1;
+	bindData[bindName] = otabbar
+	that.setData({
+		bindData
+	});
+}
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
-})
+module.exports = {
+	tabbar: tabbarmain
+}
