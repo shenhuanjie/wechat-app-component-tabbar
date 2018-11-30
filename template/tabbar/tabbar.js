@@ -1,4 +1,4 @@
-// pages/index/index.js
+// template/tabbar/tabbar.js
 Page({
 
   /**
